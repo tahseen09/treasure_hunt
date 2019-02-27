@@ -15,10 +15,10 @@ def index(request):
         print(ans)
         ques_id = request.POST.get("id")
         print(ques_id)
-        check = clues.objects.filter(ans=ans, ques_id=ques_id).exists()
+        check = clues.objects.filter(ans__iexact=ans, ques_id=ques_id).exists()
         if check:
             try:
-                next_ques = clues.objects.get(prev_ans=ans, ques_id=int(ques_id)+1)
+                next_ques = clues.objects.get(prev_ans__iexact=ans, ques_id=int(ques_id)+1)
             except ObjectDoesNotExist:
                 return render(request, 'final.html')
             #if int(next_ques.ques_id)+1 > 3:
