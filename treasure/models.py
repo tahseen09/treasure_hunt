@@ -10,5 +10,5 @@ class clues(models.Model):
 
 class users(models.Model):
     name = models.CharField(max_length = 50, null = True, blank = True)
-    team_id = models.PositiveIntegerField(unique=True,blank=True, null=True)
+    team_id = models.PositiveIntegerField(blank=True, null=True)
     created = models.DateTimeField(default= datetime.datetime.now())
