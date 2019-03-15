@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from . models import clues, users
 from . forms import Form, submit_form
 from django.core.exceptions import ObjectDoesNotExist
+import datetime
 # Create your views here.
 
 #code flow: check if there is any form post method -> if ans found in db, generate next question -> else load same question 
@@ -41,6 +42,7 @@ def final(request):
         form = submit_form(request.POST)
         team_name=request.POST.get("name")
         team_id=request.POST.get("id")
-        u = users(name=team_name, team_id= team_id)
+        created = datetime.datetime.now()
+        u = users(name=team_name, team_id= team_id, created=created)
         u.save()
         return HttpResponse("Thank you for participating.")
