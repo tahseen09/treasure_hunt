@@ -4,11 +4,11 @@ import datetime
 # Create your models here.
 class clues(models.Model):
     ques_id = models.PositiveIntegerField(blank=True, null=True, unique=True)
-    prev_ans = models.CharField(max_length = 50, null = True, blank = True)
+    prev_ans = models.CharField(max_length = 100, null = True, blank = True)
     question = models.CharField(max_length = 500, blank = True, null = True)
-    ans = models.CharField(max_length = 50, null = True, blank = True)
+    ans = models.CharField(max_length = 100, null = True, blank = True)
 
 class users(models.Model):
-    name = models.CharField(max_length = 50, null = True, blank = True)
+    name = models.CharField(max_length = 100, null = True, blank = True)
     team_id = models.PositiveIntegerField(blank=True, null=True)
     created = models.DateTimeField(default= datetime.datetime.now())
